@@ -19,18 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initViews()
         initData()
-    }
-
-    private fun initViews() {
-        viewPager.adapter = QuotePagerAdapter(
-            listOf(
-                Quote(
-                    "나는 생각한다. 고로 나는 존재한다.",
-                    "데카르트"
-                )
-            ))
     }
 
     private fun initData() {
@@ -45,8 +34,16 @@ class MainActivity : AppCompatActivity() {
             if (it.isSuccessful) {
                 val quotes = parseQuotesJson(remoteConfig.getString("quotes"))
                 val isNameRevealed = remoteConfig.getBoolean("is_name_revealed")
+
+                displayQuotesPager(quotes, isNameRevealed)
+
+                viewPager.adapter = QuotePagerAdapter(listOf())
             }
         }
+    }
+
+    private fun displayQuotesPager(quotes: List<Quote>, isNameRevealed: Boolean) {
+
     }
 
     private fun parseQuotesJson(json: String): List<Quote> {
