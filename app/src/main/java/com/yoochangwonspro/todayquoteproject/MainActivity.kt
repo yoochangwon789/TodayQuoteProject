@@ -3,6 +3,9 @@ package com.yoochangwonspro.todayquoteproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +32,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-
+        val remoteConfig = Firebase.remoteConfig
+        remoteConfig.setConfigSettingsAsync(
+            remoteConfigSettings {
+                minimumFetchIntervalInSeconds = 0
+            }
+        )
     }
 }
