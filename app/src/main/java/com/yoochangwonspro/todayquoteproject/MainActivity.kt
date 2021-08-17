@@ -2,6 +2,8 @@ package com.yoochangwonspro.todayquoteproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -30,20 +32,22 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        remoteConfig.fetchAndActivate().addOnCompleteListener {
+        remoteConfig.fetchAndActivate().addOnCompleteListener(this) {
             if (it.isSuccessful) {
                 val quotes = parseQuotesJson(remoteConfig.getString("quotes"))
                 val isNameRevealed = remoteConfig.getBoolean("is_name_revealed")
 
                 displayQuotesPager(quotes, isNameRevealed)
-
-                viewPager.adapter = QuotePagerAdapter(listOf())
+                Log.d("success", "success")
+            } else {
+                Toast.makeText(this, "Fetch failed",
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun displayQuotesPager(quotes: List<Quote>, isNameRevealed: Boolean) {
-
+        viewPager.adapter = QuotePagerAdapter(quotes)
     }
 
     private fun parseQuotesJson(json: String): List<Quote> {
