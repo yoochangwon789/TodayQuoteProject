@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayQuotesPager(quotes: List<Quote>, isNameRevealed: Boolean) {
-        viewPager.adapter = QuotePagerAdapter(quotes)
+        viewPager.adapter = QuotePagerAdapter(quotes, isNameRevealed)
     }
 
     private fun parseQuotesJson(json: String): List<Quote> {
