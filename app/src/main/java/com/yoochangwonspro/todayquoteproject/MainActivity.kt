@@ -3,6 +3,7 @@ package com.yoochangwonspro.todayquoteproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.ktx.Firebase
@@ -15,6 +16,10 @@ class MainActivity : AppCompatActivity() {
 
     private val viewPager: ViewPager2 by lazy {
         findViewById(R.id.viewPager)
+    }
+
+    private val progressBar: ProgressBar by lazy {
+        findViewById(R.id.progressBar)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
