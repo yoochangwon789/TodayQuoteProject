@@ -38,5 +38,15 @@ class MainActivity : AppCompatActivity() {
                 minimumFetchIntervalInSeconds = 0
             }
         )
+
+        remoteConfig.fetchAndActivate().addOnCompleteListener {
+            if (it.isSuccessful) {
+                val quotes = parseQuotesJson(remoteConfig.getString("quotes"))
+            }
+        }
+    }
+
+    private fun parseQuotesJson(json: String): List<Quote> {
+
     }
 }
