@@ -13,5 +13,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initViews()
+    }
+
+    private fun initViews() {
+        viewPager.adapter = QuotePagerAdapter(
+            listOf(
+                Quote(
+                    "나는 생각한다. 고로 나는 존재한다.",
+                    "데카르트"
+                )
+            ))
     }
 }
