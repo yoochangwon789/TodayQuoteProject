@@ -3,6 +3,7 @@ package com.yoochangwonspro.todayquoteproject
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class QuotePagerAdapter(
@@ -23,5 +24,11 @@ class QuotePagerAdapter(
 
     class QuoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private val quoteTextView: TextView = itemView.findViewById(R.id.quoteTextView)
+        private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
+
+        fun bind(quote: Quote) {
+
+        }
     }
 }
