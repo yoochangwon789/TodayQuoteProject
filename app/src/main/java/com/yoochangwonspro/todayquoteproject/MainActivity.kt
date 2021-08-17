@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initViews()
+        initData()
     }
 
     private fun initViews() {
@@ -25,5 +26,9 @@ class MainActivity : AppCompatActivity() {
                     "데카르트"
                 )
             ))
+    }
+
+    private fun initData() {
+
     }
 }
