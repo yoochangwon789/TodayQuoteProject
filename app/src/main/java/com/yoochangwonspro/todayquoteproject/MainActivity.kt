@@ -3,6 +3,7 @@ package com.yoochangwonspro.todayquoteproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         remoteConfig.fetchAndActivate().addOnCompleteListener(this) {
+            progressBar.visibility = View.GONE
+
             if (it.isSuccessful) {
                 val quotes = parseQuotesJson(remoteConfig.getString("quotes"))
                 val isNameRevealed = remoteConfig.getBoolean("is_name_revealed")
