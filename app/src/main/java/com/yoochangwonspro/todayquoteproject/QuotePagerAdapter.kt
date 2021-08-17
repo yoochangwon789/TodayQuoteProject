@@ -18,7 +18,7 @@ class QuotePagerAdapter(
         )
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        holder.bind(quote[position])
+        holder.bind(quote[position], isNameRevealed)
     }
 
     override fun getItemCount(): Int = quote.size
@@ -28,9 +28,15 @@ class QuotePagerAdapter(
         private val quoteTextView: TextView = itemView.findViewById(R.id.quoteTextView)
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
 
-        fun bind(quote: Quote) {
+        fun bind(quote: Quote, isNameRevealed: Boolean) {
             quoteTextView.text = quote.quote
-            nameTextView.text = quote.name
+
+            if (isNameRevealed) {
+                nameTextView.text = quote.name
+                nameTextView.visibility = View.VISIBLE
+            } else {
+                nameTextView.visibility = View.GONE
+            }
         }
     }
 }
