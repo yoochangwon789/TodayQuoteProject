@@ -28,7 +28,8 @@ class QuotePagerAdapter(
         private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
 
         fun bind(quote: Quote) {
-
+            quoteTextView.text = quote.quote
+            nameTextView.text = quote.name
         }
     }
 }
