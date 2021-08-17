@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class QuotePagerAdapter(
-    val quote: List<Quote>,
+    private val quote: List<Quote>,
 ) : RecyclerView.Adapter<QuotePagerAdapter.QuoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -17,7 +17,7 @@ class QuotePagerAdapter(
         )
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(quote[position])
     }
 
     override fun getItemCount(): Int = quote.size
