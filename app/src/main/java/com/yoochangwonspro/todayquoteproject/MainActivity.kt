@@ -6,6 +6,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,11 +44,26 @@ class MainActivity : AppCompatActivity() {
         remoteConfig.fetchAndActivate().addOnCompleteListener {
             if (it.isSuccessful) {
                 val quotes = parseQuotesJson(remoteConfig.getString("quotes"))
+                val isNameRevealed = remoteConfig.getBoolean("is_name_revealed")
             }
         }
     }
 
     private fun parseQuotesJson(json: String): List<Quote> {
+        val jsonArray = JSONArray(json)
+        var jsonList = emptyList<JSONObject>()
 
+        for (index in 0 until jsonArray.length()) {
+            val jsonObject = jsonArray.getJSONObject(index)
+            jsonObject?.let {
+                jsonList = jsonList + it
+            }
+        }
+
+        return jsonList.map {
+            Quote(
+                quote = it.getString("quote"),
+                name = it.getString("name"))
+        }
     }
 }
