@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class QuotePagerAdapter(
     private val quote: List<Quote>,
+    private val isNameRevealed: Boolean
 ) : RecyclerView.Adapter<QuotePagerAdapter.QuoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

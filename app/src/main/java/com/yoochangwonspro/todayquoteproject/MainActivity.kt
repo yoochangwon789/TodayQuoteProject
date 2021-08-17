@@ -36,9 +36,7 @@ class MainActivity : AppCompatActivity() {
             if (it.isSuccessful) {
                 val quotes = parseQuotesJson(remoteConfig.getString("quotes"))
                 val isNameRevealed = remoteConfig.getBoolean("is_name_revealed")
-
                 displayQuotesPager(quotes, isNameRevealed)
-                Log.d("success", "success")
             } else {
                 Toast.makeText(this, "Fetch failed",
                     Toast.LENGTH_SHORT).show()
