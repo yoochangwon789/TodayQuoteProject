@@ -27,7 +27,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initViews()
         initData()
+    }
+
+    private fun initViews() {
+        viewPager.setPageTransformer { page, position ->
+
+        }
     }
 
     private fun initData() {
