@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                     page.alpha = 1F
                 }
                 else -> {
-                    page.alpha = 1F - position.absoluteValue
+                    page.alpha = 1F - 2 * position.absoluteValue
                 }
             }
         }
