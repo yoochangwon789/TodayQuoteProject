@@ -22,7 +22,7 @@ class QuotePagerAdapter(
         holder.bind(quote[position], isNameRevealed)
     }
 
-    override fun getItemCount(): Int = quote.size
+    override fun getItemCount(): Int = Int.MAX_VALUE
 
     class QuoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
