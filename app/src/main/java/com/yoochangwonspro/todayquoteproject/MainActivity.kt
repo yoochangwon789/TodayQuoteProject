@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity() {
                 position.absoluteValue >= 1F -> {
                     page.alpha = 0F
                 }
+                position == 0F -> {
+                    page.alpha = 1F
+                }
+                else -> {
+                    page.alpha = 1F - position.absoluteValue
+                }
             }
         }
     }
