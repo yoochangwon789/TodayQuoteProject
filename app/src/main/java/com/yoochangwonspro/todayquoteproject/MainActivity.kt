@@ -12,6 +12,7 @@ import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.math.absoluteValue
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +34,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         viewPager.setPageTransformer { page, position ->
-
+            when {
+                position.absoluteValue >= 1F -> {
+                    page.alpha = 0F
+                }
+            }
         }
     }
 
