@@ -19,7 +19,8 @@ class QuotePagerAdapter(
         )
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        holder.bind(quote[position], isNameRevealed)
+        val actualPosition = position % quote.size
+        holder.bind(quote[actualPosition], isNameRevealed)
     }
 
     override fun getItemCount(): Int = Int.MAX_VALUE
